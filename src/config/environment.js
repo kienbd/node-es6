@@ -1,14 +1,17 @@
+import config from './config.json'
+/*
+ * required: PORT, MONGODB_URI
+ *
+ */
 const env = process.env.NODE_ENV || 'development'
 
-switch(env) {
-case 'development':
-  process.env.PORT = 3000
-  process.env.MONGODB_URI = 'mongodb://localhost:27017/test'
-  break
-case 'test':
-  process.env.PORT = 4000
-  process.env.MONGODB_URI = 'mongodb://localhost:27017/testData'
-  break
+if (env === 'development' || env === 'test') {
+  const envConfig = config[env]
+
+  Object.keys(envConfig).forEach((key) => {
+    process.env[key] = envConfig[key]
+  })
+
 }
 
 console.log(`*** ${env} ***`)
