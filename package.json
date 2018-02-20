@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/server.js --exec babel-node",
-    "test": "mocha \"./{,!(node_modules)/**/}*.test.js\" --require babel-register",
+    "test": "mocha \"./{,!(node_modules)/**/}*.test.js\" --require babel-register --require test/bootstrap",
     "test-watch": "export NODE_ENV=test && nodemon --exec 'npm test'"
   },
   "author": "",
