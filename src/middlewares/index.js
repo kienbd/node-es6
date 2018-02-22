@@ -4,7 +4,8 @@ import morgan from 'morgan'
 export default () => {
   const routes = Router()
 
-  routes.use(morgan('dev'))
+  if(process.env.NODE_ENV === 'development')
+    routes.use(morgan('dev'))
 
   return routes
 }
